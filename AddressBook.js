@@ -10,7 +10,7 @@
     );
     let zip = RegExp("^[1-9]{1}([0-9]*[ ]?[0-9]+){5,6}$");
     let phoneNumber = RegExp("^[8,9]{1}[0-9]{9}$");
-    console.log('regex validation: '+ parameter +' '+ number);
+    //console.log('regex validation: '+ parameter +' '+ number);
     switch (number) {
       case 1:
         if (name.test(parameter)) return true;
@@ -49,7 +49,7 @@ class contacts {
     if (RegexpValidation(1, firstName)) this._firstName = firstName;
   }
   get lastName() {
-    return this.lastName;
+    return this._lastName;
   }
   set lastName(lastName) {
     if (RegexpValidation(1, lastName)) this._lastName = lastName;
@@ -89,9 +89,23 @@ let contact = new contacts(
   "Prajval",
   "Chauhan",
   "Saharanpur",
-  "Uttarpradesh",
+  "Uttrakhand",
   "247342",
   "9876543210",
   "abc.de@vwx.yza.in"
 );
+let AddressBookArray = new Array();
+AddressBookArray.push({
+    Name: contact.firstName +' '+ contact. lastName,
+    City: contact.city,
+    State: contact.state,
+    ZIP: contact.zip,
+    PhoneNumber: contact.phoneNumber,
+    Email: contact.email,
+    toString() {
+        return '\n -------------------------------------\n'+'Name => '+this.Name+'\nCity => '+this.City + '\nState => '+this.State
+                +'\nZIP => '+this.ZIP+'\nPhone Number => '+this.PhoneNumber+'\nEmail => '+this.Email+'\n -------------------------------------\n'
+    }
+});
+console.log('Array:\n'+AddressBookArray);
 
